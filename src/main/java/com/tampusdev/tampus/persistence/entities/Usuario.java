@@ -29,6 +29,7 @@ public class Usuario implements UserDetails {
     private String lastName;
     @NotNull
     private String email;
+    @NotNull
     private String password;
     private long token;
     @Enumerated(EnumType.ORDINAL)

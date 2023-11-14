@@ -1,4 +1,4 @@
-package com.tampusdev.tampus.config;
+package com.tampusdev.tampus.config.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -38,7 +38,8 @@ public class SecurityConfig {
     private RequestMatcher publicEndPoints(){
         return new OrRequestMatcher(
                 new AntPathRequestMatcher("/api/greeting/sayHello"),
-                new AntPathRequestMatcher("/api/auth/**")
+                new AntPathRequestMatcher("/api/auth/**"),
+                new AntPathRequestMatcher("/h2-console/**")
         );
     }
 }

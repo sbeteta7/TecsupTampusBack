@@ -1,4 +1,4 @@
-package com.tampusdev.tampus.config;
+package com.tampusdev.tampus.config.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

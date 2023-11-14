@@ -1,0 +1,52 @@
+server:
+  port: 8090
+spring:
+  profiles:
+    active: dev
+  application:
+    name: api_tampus
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 572408722808-nhktd66o223u7i9gvhldkmjb8j1k1mfv.apps.googleusercontent.com
+            client-secret: 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
+            scope: profile,email
+---
+# application-dev.yml
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+  h2:
+    console:
+      enabled: true
+
+---
+# application.yml
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:mysql://bsdhdmqewfejtzyeiowm-mysql.services.clever-cloud.com:3306/bsdhdmqewfejtzyeiowm
+    username: u8zaxhghcpvrashe
+    password: SLfDyrfusudf0EMBMlad
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+

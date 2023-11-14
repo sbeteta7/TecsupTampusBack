@@ -1,6 +1,6 @@
 package com.tampusdev.tampus.services.businesslogic;
 
-import com.tampusdev.tampus.config.JwtService;
+import com.tampusdev.tampus.config.security.JwtService;
 import com.tampusdev.tampus.controller.models.AuthResponse;
 import com.tampusdev.tampus.controller.models.AuthenticationRequest;
 import com.tampusdev.tampus.controller.models.RegisterRequest;
@@ -65,5 +65,4 @@ public class AuthServiceImpl implements AuthService {
         var jwtToken = jwtService.generateToken(user);
         return AuthResponse.builder().token(jwtToken).build();
     }
-
 }
