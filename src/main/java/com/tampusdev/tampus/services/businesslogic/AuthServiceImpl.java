@@ -35,7 +35,8 @@ public class AuthServiceImpl implements AuthService {
         userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
         return AuthResponse.builder()
-                .token(jwtToken).build();
+                .token(jwtToken)
+                .build();
     }
 
     @Override
@@ -50,7 +51,8 @@ public class AuthServiceImpl implements AuthService {
         userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
         return AuthResponse.builder()
-                .token(jwtToken).build();
+                .token(jwtToken)
+                .build();
     }
 
     @Override
@@ -63,6 +65,7 @@ public class AuthServiceImpl implements AuthService {
         );
         var user = userRepository.findUsuarioByEmail(request.getEmail()).orElseThrow();
         var jwtToken = jwtService.generateToken(user);
-        return AuthResponse.builder().token(jwtToken).build();
+        return AuthResponse.builder().token(jwtToken)
+                .build();
     }
 }

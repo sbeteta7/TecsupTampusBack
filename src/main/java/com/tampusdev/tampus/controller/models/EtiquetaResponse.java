@@ -1,5 +1,6 @@
 package com.tampusdev.tampus.controller.models;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthResponse {
-    private String token;
-
+public class EtiquetaResponse {
+    private int id_etiqueta;
+    private String nombre;
 }

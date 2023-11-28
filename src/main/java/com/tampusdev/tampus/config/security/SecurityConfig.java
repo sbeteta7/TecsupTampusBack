@@ -25,6 +25,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+
         httpSecurity.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(publicEndPoints()).permitAll()
@@ -39,7 +40,10 @@ public class SecurityConfig {
         return new OrRequestMatcher(
                 new AntPathRequestMatcher("/api/greeting/sayHello"),
                 new AntPathRequestMatcher("/api/auth/**"),
-                new AntPathRequestMatcher("/h2-console/**")
+                new AntPathRequestMatcher("/h2-console/**"),
+                new AntPathRequestMatcher("/api/anuncios/**")/*,
+                new AntPathRequestMatcher("/api/etiquetas/**"),
+                new AntPathRequestMatcher("/api/anuncioEtiquetas/**")*/
         );
     }
 }
