@@ -1,5 +1,7 @@
 package com.tampusdev.tampus.config.security;
 
+import com.tampusdev.tampus.persistence.entities.Usuario;
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -39,8 +41,17 @@ public class JwtFilter extends OncePerRequestFilter {
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null){
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
             if(jwtService.validateToken(jwt,userDetails)){
+
+                // Acceder a las claims del token para obtener el ID del usuario
+                Claims claims = jwtService.getAllClaims(jwt);
+                Long userId = claims.get("id_user", Long.class);
+                // Configurar el objeto Usuario en el contexto de seguridad
+                Usuario usuario = new Usuario();
+                usuario.setId(userId);
+                usuario.setEmail(userEmail);
+
                 UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                        userDetails,
+                        usuario,
                         null,
                         userDetails.getAuthorities()
                 );

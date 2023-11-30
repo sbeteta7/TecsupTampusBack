@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Getter
+@Setter
 @Data
 @Entity
 @Table(name = "anuncio")
@@ -19,9 +20,9 @@ public class Anuncio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_anuncio;
 
-   // @ManyToOne
-   // @JoinColumn(name = "id")
-   // private Usuario id_user;
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private Usuario id_user;
 
     @Column(length = 50)
     private String proposito;

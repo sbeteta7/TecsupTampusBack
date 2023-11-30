@@ -1,5 +1,6 @@
 package com.tampusdev.tampus.config.security;
 
+import com.tampusdev.tampus.persistence.entities.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -18,9 +19,14 @@ public class JwtService {
     private static final String SECRET_KEY = "01df868d40f8775ab22861cce20d803dfc9dcbfcad7da0013d5d05b944d517f1";
 
     // Método para generar el token JWT
-    public String generateToken(UserDetails userDetails){
-        return generateToken(new HashMap<>(), userDetails);
+    public String generateToken(UserDetails userDetails) {
+        Map<String, Object> extraClaims = new HashMap<>();
+        if (userDetails instanceof Usuario) {
+            extraClaims.put("id_user", ((Usuario) userDetails).getId());
+        }
+        return generateToken(extraClaims, userDetails);
     }
+
 
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails){
         return Jwts.builder().setClaims(extraClaims)
@@ -39,7 +45,7 @@ public class JwtService {
         return claimsResolver.apply(claims);
     }
 
-    private Claims getAllClaims(String token) {
+    Claims getAllClaims(String token) {
         return Jwts
                 .parserBuilder()
                 .setSigningKey(getSignInKey())

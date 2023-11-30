@@ -3,6 +3,7 @@ package com.tampusdev.tampus.services.businesslogic;
 import com.tampusdev.tampus.controller.models.AnuncioRequest;
 import com.tampusdev.tampus.controller.models.AnuncioResponse;
 import com.tampusdev.tampus.persistence.entities.Anuncio;
+import com.tampusdev.tampus.persistence.entities.Usuario;
 import com.tampusdev.tampus.persistence.repository.AnuncioRepository;
 import com.tampusdev.tampus.services.AnuncioService;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,10 @@ public class AnuncioServicelmpl implements AnuncioService {
 
     @Override
     public AnuncioResponse createAnuncio(AnuncioRequest request) {
-       var anuncio= Anuncio.builder()
+        Usuario user = new Usuario();
+        user.setId(Long.valueOf(request.getId_user()));
+        var anuncio= Anuncio.builder()
+               .id_user(user)
                .titulo(request.getTitulo())
                .descripcion(request.getDescripcion())
                .precio_min(request.getPrecio_min())
@@ -30,7 +34,21 @@ public class AnuncioServicelmpl implements AnuncioService {
                .dimensiones(request.getDimensiones())
                .build();
        anuncioRepository.save(anuncio);
-        return AnuncioResponse.builder().build();
+
+
+
+        return AnuncioResponse.builder()
+                .id_anuncio(anuncio.getId_anuncio())
+                .id_user(anuncio.getId_user().getId().intValue())
+                .titulo(anuncio.getTitulo())
+                .descripcion(anuncio.getDescripcion())
+                .precio_min(anuncio.getPrecio_min())
+                .precio_max(anuncio.getPrecio_max())
+                .tipo_espacio(anuncio.getTipo_espacio())
+                .num_hab(anuncio.getNum_hab())
+                .num_cam(anuncio.getNum_cama())
+                .dimensiones(anuncio.getDimensiones())
+                .build();
 
     }
 
@@ -41,6 +59,7 @@ public class AnuncioServicelmpl implements AnuncioService {
         for (Anuncio anuncio : anuncios) {
             AnuncioResponse anuncioResponse = new AnuncioResponse();
             anuncioResponse.setId_anuncio(anuncio.getId_anuncio());
+            anuncioResponse.setId_user(anuncio.getId_user().getId().intValue());
             anuncioResponse.setTitulo(anuncio.getTitulo());
             anuncioResponse.setDescripcion(anuncio.getDescripcion());
             anuncioResponse.setPrecio_min(anuncio.getPrecio_min());

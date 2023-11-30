@@ -1,5 +1,6 @@
 package com.tampusdev.tampus.controller.models;
 
+import com.tampusdev.tampus.persistence.entities.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,6 +14,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class AnuncioResponse {
     private int id_anuncio;
+    private int id_user;
     private String titulo;
     private String descripcion;
     private BigDecimal precio_min;

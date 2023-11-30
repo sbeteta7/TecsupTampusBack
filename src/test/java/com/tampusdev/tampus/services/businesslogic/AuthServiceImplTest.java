@@ -74,7 +74,7 @@ class AuthServiceImplTest {
                 .role(RoleEnum.ROLE_ESTUDIANTE)
                 .build();
 
-        when(userRepository.findUsuarioByEmail(any(String.class))).thenReturn(Optional.of(mockUser));
+        when(userRepository.findByEmail(any(String.class))).thenReturn(Optional.of(mockUser));
         when(authenticationManager.authenticate(any(Authentication.class))).thenReturn(mockAuthentication());
         when(jwtService.generateToken(any(Usuario.class))).thenReturn("mockedToken");
 

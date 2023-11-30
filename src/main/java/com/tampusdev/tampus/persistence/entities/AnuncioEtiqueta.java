@@ -16,12 +16,12 @@ public class AnuncioEtiqueta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    //@OneToOne
-    //@JoinColumn(name = "id_anuncio")
-    private Integer id_anuncio;
+    @OneToOne
+    @JoinColumn(name = "id_anuncio")
+    private Anuncio id_anuncio;
 
-    //@ManyToOne
-    //@JoinColumn(name = "id_etiqueta")
-    private Integer id_etiqueta;
+    @ManyToOne
+    @JoinColumn(name = "id_etiqueta")
+    private Etiqueta id_etiqueta;
 
 }
