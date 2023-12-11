@@ -1,16 +1,16 @@
 package com.tampusdev.tampus.persistence.entities;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
 @Data
 @Entity
+@Table(name = "anuncio_files")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AnuncioEtiqueta {
+public class AnuncioFiles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -20,7 +20,6 @@ public class AnuncioEtiqueta {
     private Anuncio id_anuncio;
 
     @ManyToOne
-    @JoinColumn(name = "id_etiqueta")
-    private Etiqueta id_etiqueta;
-
+    @JoinColumn(name = "id_file")
+    private FileDetails id_file;
 }

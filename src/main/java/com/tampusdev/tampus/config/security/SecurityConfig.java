@@ -41,7 +41,8 @@ public class SecurityConfig {
                 new AntPathRequestMatcher("/api/greeting/sayHello"),
                 new AntPathRequestMatcher("/api/auth/**"),
                 new AntPathRequestMatcher("/h2-console/**"),
-                new AntPathRequestMatcher("/api/anuncios/**")/*,
+                new AntPathRequestMatcher("/api/anuncios/**"),
+                new AntPathRequestMatcher("/image/**")/*,
                 new AntPathRequestMatcher("/api/etiquetas/**"),
                 new AntPathRequestMatcher("/api/anuncioEtiquetas/**")*/
         );

@@ -6,7 +6,6 @@ import lombok.*;
 @Getter
 @Data
 @Entity
-@Table(name = "etiqueta")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

@@ -15,8 +15,9 @@ public class AnuncioRequest {
     private Integer id_user;
     private String titulo;
     private String descripcion;
-    private BigDecimal precio_min;
-    private BigDecimal precio_max;
+    private String ubicacion;
+    private BigDecimal precio;
+
     private String tipo_espacio;
     private int num_hab;
     private int num_cam;

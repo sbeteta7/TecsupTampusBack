@@ -3,6 +3,7 @@ package com.tampusdev.tampus.services.businesslogic;
 
 import com.tampusdev.tampus.controller.models.AnuncioEtiquetaRequest;
 import com.tampusdev.tampus.controller.models.AnuncioEtiquetaResponse;
+import com.tampusdev.tampus.controller.models.EtiquetaResponse;
 import com.tampusdev.tampus.persistence.entities.Etiqueta;
 import com.tampusdev.tampus.persistence.entities.Anuncio;
 import com.tampusdev.tampus.persistence.entities.AnuncioEtiqueta;
@@ -17,7 +18,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AnuncioEtiquetaServicelmpl implements AnuncioEtiquetaService {
-
 
     private final AnuncioEtiquetaRepository anuncioEtiquetaRepository;
     public List<AnuncioEtiquetaResponse> associateAnuncioEtiquetas(AnuncioEtiquetaRequest request) {
@@ -47,6 +47,18 @@ public class AnuncioEtiquetaServicelmpl implements AnuncioEtiquetaService {
         return anuncioEtiquetaResponses;
     }
 
+    public List<EtiquetaResponse> getEtiquetaByAnuncio(Integer id_anuncio) {
+
+        List<AnuncioEtiqueta> anuncioEtiquetas = anuncioEtiquetaRepository.findById_anuncio(id_anuncio);
+        List<EtiquetaResponse> etiquetaResponses = new ArrayList<>();
+        for (AnuncioEtiqueta anuncioEtiqueta : anuncioEtiquetas) {
+            etiquetaResponses.add(EtiquetaResponse.builder()
+                    .id_etiqueta(anuncioEtiqueta.getId_etiqueta().getId_etiqueta())
+                    .nombre(anuncioEtiqueta.getId_etiqueta().getNombre())
+                    .build());
+        }
+        return etiquetaResponses;
+    }
 
 }
 

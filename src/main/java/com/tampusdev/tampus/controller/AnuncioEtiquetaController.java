@@ -2,14 +2,12 @@ package com.tampusdev.tampus.controller;
 
 import com.tampusdev.tampus.controller.models.AnuncioEtiquetaRequest;
 import com.tampusdev.tampus.controller.models.AnuncioEtiquetaResponse;
+import com.tampusdev.tampus.controller.models.EtiquetaResponse;
 import com.tampusdev.tampus.services.AnuncioEtiquetaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +24,17 @@ public class AnuncioEtiquetaController {
     ) {
         try {
             return ResponseEntity.ok(anuncioEtiquetaService.associateAnuncioEtiquetas(request));
+        } catch (Exception e) {
+            // Manejo de errores
+            e.printStackTrace();  // Agregar manejo de errores adecuado
+            throw new RuntimeException("Error al guardar el curso: " + e.getMessage());
+        }
+    }
+
+    @GetMapping("/getEtiquetaByAnuncio/{id_anuncio}")
+    public ResponseEntity<List<EtiquetaResponse>> getEtiquetaByAnuncio(@PathVariable Integer id_anuncio) {
+        try {
+            return ResponseEntity.ok(anuncioEtiquetaService.getEtiquetaByAnuncio(id_anuncio));
         } catch (Exception e) {
             // Manejo de errores
             e.printStackTrace();  // Agregar manejo de errores adecuado

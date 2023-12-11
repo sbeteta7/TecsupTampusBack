@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface EtiquetaService {
     List<EtiquetaResponse> getAllEtiquetas();
+
+
 }

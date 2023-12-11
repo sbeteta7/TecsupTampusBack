@@ -17,13 +17,14 @@ public class AnuncioResponse {
     private int id_user;
     private String titulo;
     private String descripcion;
-    private BigDecimal precio_min;
-    private BigDecimal precio_max;
+    private String ubicacion;
+    private BigDecimal precio;
+
 
     private String tipo_espacio;
 
     private Integer num_hab;
-    private Integer num_cam;
+    private Integer num_cama;
     private int dimensiones;
 
    // private LocalDate fecha_creacion;
