@@ -1,4 +1,4 @@
-package com.tampusdev.tampus.exception;
+package com.tampusdev.tampus.exceptions;
 
 public class FileNotSupportedException extends RuntimeException{
 

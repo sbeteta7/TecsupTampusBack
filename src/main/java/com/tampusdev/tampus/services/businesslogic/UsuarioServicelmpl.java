@@ -27,7 +27,6 @@ public class UsuarioServicelmpl implements UsuarioService {
             usuarioResponse.setFirstName(usuario.get().getFirstName());
             usuarioResponse.setLastName(usuario.get().getLastName());
             usuarioResponse.setEmail(usuario.get().getEmail());
-          //usuarioResponse.setPassword(usuario.get().getPassword());
             usuarioResponse.setRole(String.valueOf(usuario.get().getRole()));
             return usuarioResponse;
         }
@@ -45,7 +44,6 @@ public class UsuarioServicelmpl implements UsuarioService {
             usuarioResponse.setFirstName(usuario.get().getFirstName());
             usuarioResponse.setLastName(usuario.get().getLastName());
             usuarioResponse.setEmail(usuario.get().getEmail());
-            //usuarioResponse.setPassword(usuario.get().getPassword());
             usuarioResponse.setRole(String.valueOf(usuario.get().getRole()));
             return usuarioResponse;
         }

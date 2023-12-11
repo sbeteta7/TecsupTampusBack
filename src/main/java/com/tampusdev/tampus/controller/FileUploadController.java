@@ -2,7 +2,7 @@ package com.tampusdev.tampus.controller;
 
 
 import com.tampusdev.tampus.controller.models.FileUploadResponse;
-import com.tampusdev.tampus.exception.FileNotSupportedException;
+import com.tampusdev.tampus.exceptions.FileNotSupportedException;
 import com.tampusdev.tampus.persistence.entities.FileDetails;
 import com.tampusdev.tampus.services.FileUploadService;
 import jakarta.servlet.http.HttpServletRequest;

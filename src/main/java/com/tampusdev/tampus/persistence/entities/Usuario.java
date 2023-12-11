@@ -23,15 +23,21 @@ public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
+    @Column(name = "nombre_usuario")
+    @NotNull
     private String firstName;
+    @Column(name = "apellido_usuario")
+    @NotNull
     private String lastName;
+    @Column(unique = true)
     @NotNull
     private String email;
     @NotNull
     private String password;
+    @NotNull
     private Date fecha_nacimiento;
+    @NotNull
     private String telefono;
     private long token;
     @Enumerated(EnumType.ORDINAL)
@@ -44,6 +50,8 @@ public class Usuario implements UserDetails {
     private Date updatedBy;
     @Column(name = "estado_user")
     private Boolean estadoUser;
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -1,9 +1,8 @@
 package com.tampusdev.tampus.services.businesslogic;
 
 import com.tampusdev.tampus.controller.models.FileUploadResponse;
-import com.tampusdev.tampus.exception.FileNotSupportedException;
+import com.tampusdev.tampus.exceptions.FileNotSupportedException;
 import com.tampusdev.tampus.persistence.entities.FileDetails;
-import com.tampusdev.tampus.persistence.entities.Usuario;
 import com.tampusdev.tampus.persistence.repository.FileDetailsRepository;
 import com.tampusdev.tampus.services.FileUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +17,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;

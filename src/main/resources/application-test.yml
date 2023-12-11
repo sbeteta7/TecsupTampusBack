@@ -1,0 +1,13 @@
+# application-test.yml
+spring:
+  profiles:
+    active: test
+  datasource:
+    url: jdbc:mysql://test-host:3306/tampus_test?sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false
+    username: test_user
+    password: test_password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
